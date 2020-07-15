@@ -1,0 +1,145 @@
+\RequirePackage{silence}
+\WarningFilter{biblatex}{Patching footnotes failed}
+\documentclass[10pt, compress,british,xcolor={svgnames,dvipsnames,x11names},trans]{beamer}
+
+\usepackage{babel}
+\usepackage{wrapfig}
+\usepackage{csquotes}
+\usepackage{comment}
+\usepackage{tikzsymbols}
+
+%%% mtheme customisations
+\usetheme[progressbar=frametitle,block=fill]{metropolis}
+\setmonofont[Scale=0.92]{Fira Mono}
+\AtBeginSubsection{
+% \metroset{color/background=dark}
+\frame[plain,c]{
+  \begin{center}
+  \begin{minipage}{25em}
+    \usebeamercolor[fg]{section title}
+    \usebeamerfont{section title}
+    \insertsubsection\\[-1ex]
+    \usebeamertemplate*{progress bar in section page}
+  \end{minipage}
+  \end{center}
+}
+% \metroset{color/background=light}
+}
+%%%%% end mtheme
+
+\setbeamertemplate{frametitle continuation}[from second]
+\setbeamertemplate{bibliography item}[book]
+
+\usepackage{xeCJK}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont[BoldFont=Noto Sans CJK SC]{Noto Sans CJK SC Light}
+% \newCJKfontfamily{\xiheifont}[BoldFont=STHeiti]{STXihei}
+% \newCJKfontfamily{\xiheifont}{WenQuanYi Micro Hei}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{chains}
+\usepackage{tikz-qtree}
+\usepackage{multicol}
+
+
+\usepackage{expex}
+%\lingset{glhangindent=2em,glspace=1em,aboveexskip=0pt,belowexskip=0pt,aboveglftskip=-3pt,extraglskip=3pt} %v0.1
+%\lingset{exskip=0pt,interpartskip=-3pt,belowpreambleskip=-3pt,belowglpreambleskip=-3pt,aboveglftskip=-3pt,extraglskip=3pt,glhangstyle=none}
+\usepackage{relsize}
+\usepackage{booktabs,tabularx}
+%\usepackage{textcomp}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,breaklines=true,breakatwhitespace=true,
+keywordstyle={\color{NavyBlue}\bfseries}, showstringspaces=false,
+commentstyle={\color{PaleVioletRed4}},
+emphstyle={\color{OliveGreen}\bfseries}
+}
+
+\usepackage{algorithmic}
+\renewcommand{\algorithmiccomment}[1]{\alert{/* #1 */}}
+
+\usetikzlibrary{shapes.multipart}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta}
+
+\makeatletter
+\pgfarrowsdeclare{crow's foot}{crow's foot}
+{
+  \pgfarrowsleftextend{+-.5\pgflinewidth}%
+  \pgfarrowsrightextend{+.5\pgflinewidth}%
+}
+{
+  \pgfutil@tempdima=0.5pt%
+  \advance\pgfutil@tempdima by.25\pgflinewidth%
+  \pgfsetdash{}{+0pt}%
+  \pgfsetmiterjoin%
+  \pgfpathmoveto{\pgfqpoint{0pt}{-6\pgfutil@tempdima}}%
+  \pgfpathlineto{\pgfqpoint{-6\pgfutil@tempdima}{0pt}}%
+  \pgfpathlineto{\pgfqpoint{0pt}{6\pgfutil@tempdima}}%
+  \pgfusepathqstroke%
+}
+
+\usepackage[backend=biber,style=apa]{biblatex}
+\DeclareLanguageMapping{british}{british-apa}
+\renewcommand{\finalnamedelim}{and}
+\renewcommand{\bibfont}{\small}
+\setlength{\bibhang}{1em}
+\setlength{\bibitemsep}{1ex}
+\bibliography{refs}
+\renewcommand{\UrlFont}{\ttfamily}
+
+\usepackage[os=win]{menukeys}
+
+
+\title{El rol de la Matemática en los viajes espaciales}
+
+\subtitle{Historia \& Desarrollos teóricos \\ Aportes de Katherine Johnson}
+
+%\date{5 \& 12 March 2015}
+%\date{5 March 2015\\Session 1: Common Tasks and Concepts in NLP}
+%\date{12 March 2015\\Session 2: Software Libraries and Resources for NLP}
+\date{14 de Julio 2020}
+\author{Cristian David Pachacama}
+\institute{
+Introducción a la Planetología, Astrogeología y Exobiología\\
+Facultad de Ciencias\\
+ESCUELA POLITÉCNICA NACIONAL
+}
+
+\begin{document}
+
+\maketitle
+
+
+
+\begin{frame}{Contenidos}
+\setbeamertemplate{section in toc}[sections numbered]
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+
+\include{1_modelos_matematicos}
+\include{2_aplicaciones}
+
+%\plain{End of Session 1\\See you next week!}
+%\include{common-tasks}
+%\include{wordnet}
+
+
+
+
+\plain{The End\\Thank you!}
+
+\appendix
+
+\begin{frame}[allowframebreaks]
+\frametitle{Bibliography}
+
+\alert{\footnotesize I am using the APA referencing/citation style in this presentation. \emph{You} should be using Harvard Cite-Them-Right style -- do not copy and paste from this list!}
+
+\nocite{*}
+\printbibliography[heading=none]
+
+\end{frame}
+
+\end{document}
